@@ -15,18 +15,18 @@ import Pagination from '@/components/Pagination/Pagination';
 
 import { fetchNotes } from '@/lib/api';
 
-interface NoteSlugClientProps{
-    category?: string
+interface NoteSlugClientProps {
+  tag?: string;
 }
-const NoteSlugClient = ({category}:NoteSlugClientProps) => {
+const NoteSlugClient = ({ tag }: NoteSlugClientProps) => {
 
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
   // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchInputDebounced] = useDebounce(search, 500);
   const { data, isPending, isError, isSuccess } = useQuery({
-    queryKey: ['notes', page, searchInputDebounced, category],
-    queryFn: () => fetchNotes(page, searchInputDebounced, category),
+    queryKey: ['notes', page, searchInputDebounced, tag],
+    queryFn: () => fetchNotes(page, searchInputDebounced, tag),
     placeholderData: keepPreviousData,
   });
   const handleSearchOnChange = (value: string) => {
