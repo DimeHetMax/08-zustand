@@ -9,21 +9,21 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = slug[0] === 'all' ? 'All' : slug[0];
+  const tag = slug[0] === 'all' ? 'All' : slug[0];
   return {
-    title: `${category} Note`,
-    description: `${category} Note`,
+    title: `${tag} Note`,
+    description: `${tag} Note`,
     openGraph: {
-      title:`${category} Note`,
-      description: `${category} Note`,
-      url: `https://notehub.com/notes/filter/${category}`,
+      title:`${tag} Note`,
+      description: `${tag} Note`,
+      url: `https://notehub.com/notes/filter/${tag}`,
       siteName: 'NoteHub',
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
           width: 1200,
           height: 630,
-          alt: `${category} Note`,
+          alt: `${tag} Note`,
         },
       ],
       type: 'article',
