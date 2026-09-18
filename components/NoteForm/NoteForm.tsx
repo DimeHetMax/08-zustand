@@ -46,7 +46,6 @@ const NoteForm = () => {
           defaultValue={draft.title}
           onChange={onChange}
         />
-        {/* <ErrorMessage name="title" className={css.error} component="span" /> */}
       </div>
 
       <div className={css.formGroup}>
@@ -59,7 +58,6 @@ const NoteForm = () => {
           defaultValue={draft.content}
           onChange={onChange}
         />
-        {/* <ErrorMessage name="content" className={css.error} component="span" /> */}
       </div>
 
       <div className={css.formGroup}>
@@ -77,7 +75,6 @@ const NoteForm = () => {
           <option value="Meeting">Meeting</option>
           <option value="Shopping">Shopping</option>
         </select>
-        {/* <ErrorMessage name="tag" className={css.error} component="span" /> */}
       </div>
 
       <div className={css.actions}>
