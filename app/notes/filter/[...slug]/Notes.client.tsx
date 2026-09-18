@@ -10,32 +10,26 @@ import css from './NotesPage.module.css';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
-// import Modal from '@/components/Modal/Modal';
-// import NoteForm from '@/components/NoteForm/NoteForm';
 
 import { fetchNotes } from '@/lib/api';
 
 interface NoteSlugClientProps {
-  tag?: string;
+  category?: string;
 }
-const NoteSlugClient = ({ tag }: NoteSlugClientProps) => {
+const NoteSlugClient = ({ category }: NoteSlugClientProps) => {
 
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchInputDebounced] = useDebounce(search, 500);
   const { data, isPending, isError, isSuccess } = useQuery({
-    queryKey: ['notes', page, searchInputDebounced, tag],
-    queryFn: () => fetchNotes(page, searchInputDebounced, tag),
+    queryKey: ['notes', page, searchInputDebounced, category],
+    queryFn: () => fetchNotes(page, searchInputDebounced, category),
     placeholderData: keepPreviousData,
   });
   const handleSearchOnChange = (value: string) => {
     setSearch(value);
     setPage(1);
   };
-  // const handleModalClose = () => {
-  //   setIsModalOpen(false);
-  // };
   const showNoteList = !isPending && !isError && data.notes.length > 0;
 
   return (
@@ -50,11 +44,6 @@ const NoteSlugClient = ({ tag }: NoteSlugClientProps) => {
         </Link>
       </header>
       {showNoteList && isSuccess && <NoteList notes={data.notes} />}
-      {/* {isModalOpen && (
-        <Modal onBackDropClose={handleModalClose}>
-          <NoteForm handleModalClose={handleModalClose} />
-        </Modal>
-      )} */}
     </main>
   );
 };

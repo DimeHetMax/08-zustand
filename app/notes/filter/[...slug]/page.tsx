@@ -43,7 +43,7 @@ const NotesPage = async ({ params }: Props) => {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteSlugClient tag={tag} />
+      <NoteSlugClient category={tag} />
     </HydrationBoundary>
   );
 };
