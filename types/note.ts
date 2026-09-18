@@ -6,4 +6,11 @@ export interface Note {
   updatedAt: string;
   tag: string;
 }
-export type NoteTag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping"
+
+export type NoteTag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
+
+export interface CreateNewNote {
+  title: string;
+  content: string;
+  tag: NoteTag;
+}

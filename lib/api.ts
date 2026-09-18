@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: "https://notehub-public.goit.study/api",
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}` },
 });
-import type { Note } from "../types/note";
+import type { Note ,CreateNewNote} from "../types/note";
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -27,7 +27,7 @@ export const fetchNotes = async (
   return response.data;
 };
 
-export const createNote = async (body: Pick<Note, "title" | "content" | "tag">):Promise<Note> => {
+export const createNote = async (body: CreateNewNote):Promise<Note> => {
   const response = await API.post<Note>("/notes", body);
   return response.data;
 };
